@@ -1,0 +1,179 @@
+﻿@model OnlineHelpDesk.Models.Ticket
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="content-wrapper">
+    <!-- Main content -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Title -->
+                    <div class="d-flex justify-content-between align-items-center py-3">
+                        <h2 class="h5 mb-0"><a href="#" class="text-muted"></a>Tittle: @ViewBag.ticket.Tittle</h2>
+                    </div>
+
+                    <!-- Main content -->
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <!-- Details -->
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <div class="mb-3 d-flex justify-content-between">
+                                        <div>
+                                            <span class="me-3"></span>
+                                            <span class="badge rounded-pill bg-info"></span>
+                                        </div>
+                                    </div>
+                                    <form asp-controller="tickets" asp-action="assign" method="post">
+                                        <table class="table table-borderless">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex mb-2">
+                                                                        <div class="flex-shrink-0">
+                                                                            <img src="~/uploads/@ViewBag.ticket.User.Avatar" alt="" width="35" class="img-fluid">
+                                                                        </div>
+                                                            <div class="flex-lg-grow-1 ms-3" style="margin-left:10px; margin-top:5px">
+                                                                <h5 class="small mb-0"><a href="#" class="text-reset">From: </a></h5>
+                                                                <span class="small">@ViewBag.ticket.User.FName</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>@ViewBag.ticket.User.Email</td>
+                                                    <td>@ViewBag.ticket.CreatedDate</td>
+                                                    <td class="text-end">@ViewBag.ticket.Tittle</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex mb-2">
+                                                            <div class="flex-shrink-0">
+                                                                @*<img src="~/uploads/@ViewBag.ticket.Supporter.Avatar)" alt="" width="35" class="img-fluid">*@
+                                                            </div>
+                                                            <div class="flex-lg-grow-1 ms-3">
+                                                                <h6 class="small mb-0"><a href="#" class="text-reset">To: </a></h6>
+                                                                @if (ViewBag.ticket.Supporter != null)
+                                                                {
+                                                                    <span class="small">@ViewBag.ticket.Supporter.FName</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <select name="supporterId">
+                                                                        <option>Please choose</option>
+                                                                        @foreach(var name in ViewBag.supporters)
+                                                                        {
+                                                                            <option value="@name.Id">@name.FName</option>
+                                                                        }
+                                                                    </select>
+                                                                }
+
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>@(ViewBag.ticket.Supporter != null ? ViewBag.ticket.Supporter.Email : "")</td>
+                                                    <td class="text-end">
+                                                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin")) {
+                                                            <button type="submit" class="btn btn-primary pull-right" style="margin-right: 5px">
+                                                                Assign
+                                                            </button>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+
+                                            </tfoot>
+                                        </table>
+                                        <input type="hidden" name="id" value="@ViewBag.ticket.Id" />
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- chat box -->
+                            <div class="card mb-4">
+                                <div class="card-body" style="border-radius: 15px;">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <section style="background-color: #eee;">
+
+                                                <div class="card" id="chat1">
+                                                    <div class="card-header d-flex justify-content-between align-items-center bg-info text-white border-bottom-0"
+                                                         style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                                                        <p class="mb-0 fw-bold">Discusion</p>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        @if (@ViewBag.discusion != null)
+                                                        {
+                                                            @foreach (var disc in ViewBag.discusion)
+                                                            {
+                                                                <div class="d-flex flex-row @(disc.Account.RoleId== 2 ? "justify-content-end" : "justify-content-start") mb-4">
+                                                                    <img src="~/uploads/@disc.Account.Avatar"
+                                                                         alt="avatar 1" style="width: 45px; height: 100%;">
+                                                                    <div class="p-3 ms-3" style="border-radius: 15px; background-color: rgba(57, 192, 237,.2);">
+                                                                        <p class="small mb-0">
+                                                                            @disc.Content
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                                @*<div class="d-flex flex-row justify-content-end mb-4">
+                        <div class="p-3 me-3 border" style="border-radius: 15px; background-color: #fbfbfb;">
+                            <p class="small mb-0">Thank you, I really like your product.</p>
+                        </div>
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+                             alt="avatar 1" style="width: 45px; height: 100%;">
+                    </div>*@
+                                                            }
+                                                        }
+                                                                <form asp-controller="tickets" asp-action="send" method="post">
+                                                                    <div class="form-outline">
+                                                                        <textarea class="form-control" name="message" id="textAreaExample" rows="4"></textarea>
+                                                                        <label class="form-label" for="textAreaExample">Type your message</label>
+                                                                    </div>
+                                                                    <button type="submit" class="btn btn-primary">
+                                                                        Send
+                                                                    </button>
+                                                                    <input type="hidden"  name="ticketId" value="@ViewBag.ticket.Id"/>
+                                                                </form>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </section>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <!-- Customer Notes -->
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h3 class="h6">User Notes</h3>
+                                    <p>@ViewBag.ticket.Description</p>
+                                </div>
+                            </div>
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h5>Ticket images</h5>
+                                    @if (ViewBag.ticket.Photo != null)
+                                    {
+                                    <ul>
+                                        @foreach (var photo in ViewBag.ticket.Photo)
+                                        {
+                                            <li>
+                                                <img src="~/uploads/@photo.Name" width="50" />
+                                            </li>
+                                        }
+                                    </ul>
+                                    }
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

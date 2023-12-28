@@ -1,0 +1,84 @@
+﻿@model IEnumerable<OnlineHelpDesk.Models.Ticket>
+
+@{
+    ViewData["Title"] = "Assigned ticket";
+}
+<div class="content-wrapper">
+    <!-- Main content -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <h3>
+                        Assign list
+                    </h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Number
+                                </th>
+                                <th>
+                                    Tittle
+                                </th>
+                                <th>
+                                    User Name
+                                </th>
+                                <th>
+                                    Period
+                                </th>
+                                <th>
+                                    Status
+                                </th>
+                                <th>
+                                    Category
+                                </th>
+                                <th>
+                                    Created date
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.tickets)
+                            {
+                            <tr>
+                                <td>
+                                    @item.Id
+                                </td>
+                                <td>
+                                    @item.Tittle
+                                </td>
+                                <td>
+                                    @(item.User !=null ? item.User.FName : "")
+                                </td>
+                                <td>
+                                    @item.Period.Name
+                                </td>
+                                <td>
+                                    @item.Status.Name
+                                </td>
+                                <td>
+                                    @item.Category.Name
+                                </td>
+                                <td>
+                                    @item.CreatedDate
+                                </td>
+
+                                <td>
+                                    <a asp-controller="tickets" asp-action="details" asp-route-id="@item.Id">Details</a>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

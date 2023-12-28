@@ -1,0 +1,52 @@
+﻿@model IEnumerable<OnlineHelpDesk.Models.Account>
+
+@{
+    ViewData["Title"] = "List Category";
+}
+<div class="content-wrapper">
+    <!-- Main content -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>List category</h2>
+                    <h3>@TempData["Message"] | @TempData["test"]</h3>
+                    <p>
+                        <a asp-controller="Category" asp-action="Create">Create New</a>
+                    </p>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Category Name
+                                </th>
+                                <th>
+                                    Status
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.cate)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.Name
+                                    </td>
+                                    <td>
+                                        @(item.Status ? "Active" : "Disable")
+                                    </td>
+                                    <td>
+                                        <a asp-controller="Category" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                        <a asp-controller="Category" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                        <a asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id" OnClick="return confirm('Are you sure?')">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

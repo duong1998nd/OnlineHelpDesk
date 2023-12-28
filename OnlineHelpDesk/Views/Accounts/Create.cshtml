@@ -1,0 +1,66 @@
+﻿@model OnlineHelpDesk.Models.Account
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="content-wrapper">
+    <!-- Main content -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Create</h2>
+
+                    <h4>Account</h4>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3 style="color:red">@ViewBag.msg</h3>
+                            <form asp-action="Create" enctype="multipart/form-data">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label asp-for="FName" class="control-label"></label>
+                                    <input asp-for="FName" class="form-control" />
+                                    <span asp-validation-for="FName" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Avatar" class="control-label"></label>
+                                    <input id="exampleInputFile" type="file" name="files" multiple="multiple"
+                                           accept="image/*" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label"></label>
+                                    <input asp-for="Email" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Password" class="control-label"></label>
+                                    <input asp-for="Password" class="form-control" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input asp-for="Status" /> @Html.DisplayNameFor(model => model.Status)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="RoleId" class="control-label"></label>
+                                    <select asp-for="RoleId" class="form-control" asp-items="ViewBag.RoleId"></select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Create" class="btn btn-default" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div>
+                        <a asp-controller="account" asp-action="list">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
