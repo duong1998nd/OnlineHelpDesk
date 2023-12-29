@@ -65,7 +65,7 @@ using OnlineHelpDesk.Models;
             WriteLiteral("<!DOCTYPE html>\r\n<html>\r\n\r\n");
             EndContext();
             BeginContext(54, 2821, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "181ca31586014683a0d5a8c81cdd6e27", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1d15e801ac5b471d9e734014551129cc", async() => {
                 BeginContext(60, 2808, true);
                 WriteLiteral(@"
     <title>My Awesome Login Page</title>
@@ -172,7 +172,7 @@ using OnlineHelpDesk.Models;
             WriteLiteral("\r\n<!--Coded with love by Mutiullah Samim-->\r\n");
             EndContext();
             BeginContext(2920, 2766, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d6e1c95aa80f415d93c8a1a12849b913", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d3b1b7af8dba4ba6b5a115a62a046377", async() => {
                 BeginContext(2926, 554, true);
                 WriteLiteral(@"
     <div class=""container h-100"">
@@ -188,7 +188,7 @@ using OnlineHelpDesk.Models;
                     ");
                 EndContext();
                 BeginContext(3480, 1717, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "94f88b5c6a4e46a2ba0883b327dd54c2", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4322349fbe954cfea1ac46547ba5b7d9", async() => {
                     BeginContext(3539, 79, true);
                     WriteLiteral("\r\n                        <div style=\"color:red\">\r\n                            ");
                     EndContext();

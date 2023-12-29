@@ -108,7 +108,7 @@ namespace OnlineHelpDesk.Controllers
             {
                 return NotFound();
             }
-            ViewData["RoleId"] = new SelectList(_context.Role, "Id", "Id", account.RoleId);
+            ViewData["RoleId"] = new SelectList(_context.Role, "Id", "Name", account.RoleId);
             return View(account);
         }
 
@@ -144,7 +144,7 @@ namespace OnlineHelpDesk.Controllers
                 }
                 return RedirectToAction("list", "account");
             }
-            ViewData["RoleId"] = new SelectList(_context.Role, "Id", "Id", account.RoleId);
+            ViewData["RoleId"] = new SelectList(_context.Role, "Id", "Name", account.RoleId);
             return View(account);
         }
 

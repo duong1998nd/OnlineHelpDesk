@@ -32,9 +32,9 @@
                                                 <tr>
                                                     <td>
                                                         <div class="d-flex mb-2">
-                                                                        <div class="flex-shrink-0">
-                                                                            <img src="~/uploads/@ViewBag.ticket.User.Avatar" alt="" width="35" class="img-fluid">
-                                                                        </div>
+                                                            <div class="flex-shrink-0">
+                                                                <img src="~/uploads/@ViewBag.ticket.User.Avatar" alt="" width="35" class="img-fluid">
+                                                            </div>
                                                             <div class="flex-lg-grow-1 ms-3" style="margin-left:10px; margin-top:5px">
                                                                 <h5 class="small mb-0"><a href="#" class="text-reset">From: </a></h5>
                                                                 <span class="small">@ViewBag.ticket.User.FName</span>
@@ -51,29 +51,34 @@
                                                             <div class="flex-shrink-0">
                                                                 @*<img src="~/uploads/@ViewBag.ticket.Supporter.Avatar)" alt="" width="35" class="img-fluid">*@
                                                             </div>
-                                                            <div class="flex-lg-grow-1 ms-3">
-                                                                <h6 class="small mb-0"><a href="#" class="text-reset">To: </a></h6>
-                                                                @if (ViewBag.ticket.Supporter != null)
-                                                                {
-                                                                    <span class="small">@ViewBag.ticket.Supporter.FName</span>
-                                                                }
-                                                                else
-                                                                {
-                                                                    <select name="supporterId">
-                                                                        <option>Please choose</option>
-                                                                        @foreach(var name in ViewBag.supporters)
-                                                                        {
-                                                                            <option value="@name.Id">@name.FName</option>
-                                                                        }
-                                                                    </select>
-                                                                }
 
-                                                            </div>
+                                                            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                                            {
+                                                                <div class="flex-lg-grow-1 ms-3">
+                                                                    <h6 class="small mb-0"><a href="#" class="text-reset">To: </a></h6>
+                                                                    @if (ViewBag.ticket.Supporter != null)
+                                                                    {
+                                                                        <span class="small">@ViewBag.ticket.Supporter.FName</span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <select name="supporterId">
+                                                                            <option>Please choose</option>
+                                                                            @foreach (var name in ViewBag.supporters)
+                                                                            {
+                                                                                <option value="@name.Id">@name.FName</option>
+                                                                            }
+                                                                        </select>
+                                                                    }
+
+                                                                </div>
+                                                            }
                                                         </div>
                                                     </td>
                                                     <td>@(ViewBag.ticket.Supporter != null ? ViewBag.ticket.Supporter.Email : "")</td>
                                                     <td class="text-end">
-                                                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin")) {
+                                                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                                        {
                                                             <button type="submit" class="btn btn-primary pull-right" style="margin-right: 5px">
                                                                 Assign
                                                             </button>
@@ -81,11 +86,33 @@
                                                     </td>
                                                 </tr>
                                             </tbody>
-                                            <tfoot>
-
-                                            </tfoot>
                                         </table>
                                         <input type="hidden" name="id" value="@ViewBag.ticket.Id" />
+                                    </form>
+                                    <form asp-controller="tickets" asp-action="end" method="post">
+                                        @if (User.Identity.IsAuthenticated && User.IsInRole("Supporter"))
+                                        {
+                                        <div class="flex-lg-grow-1 ms-3">
+                                            <h6 class="small mb-0"><a href="#" class="text-reset">Ticket Status: </a></h6>
+                                            @if (ViewBag.ticket.Status.Id != 3)
+                                            {
+                                                <select name="statusId">
+                                                    @foreach (var name in ViewBag.status)
+                                                    {
+                                                        <option value="@name.Id">@name.Name</option>
+                                                    }
+                                                </select>
+                                            }
+                                            else
+                                            {
+                                                <span class="small">@ViewBag.ticket.Status.Name</span>
+                                            }
+                                        </div>
+                                            <button type="submit" class="btn btn-primary pull-right" style="margin-right: 5px">
+                                                End discusion
+                                            </button>
+                                            <input type="hidden" name="id" value="@ViewBag.ticket.Id" />
+                                        }
                                     </form>
                                 </div>
                             </div>
@@ -117,30 +144,30 @@
                                                                     </div>
                                                                 </div>
                                                                 @*<div class="d-flex flex-row justify-content-end mb-4">
-                        <div class="p-3 me-3 border" style="border-radius: 15px; background-color: #fbfbfb;">
-                            <p class="small mb-0">Thank you, I really like your product.</p>
-                        </div>
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                             alt="avatar 1" style="width: 45px; height: 100%;">
-                    </div>*@
+                                                                        <div class="p-3 me-3 border" style="border-radius: 15px; background-color: #fbfbfb;">
+                                                                            <p class="small mb-0">Thank you, I really like your product.</p>
+                                                                        </div>
+                                                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+                                                                             alt="avatar 1" style="width: 45px; height: 100%;">
+                                                                    </div>*@
                                                             }
                                                         }
-                                                                <form asp-controller="tickets" asp-action="send" method="post">
-                                                                    <div class="form-outline">
-                                                                        <textarea class="form-control" name="message" id="textAreaExample" rows="4"></textarea>
-                                                                        <label class="form-label" for="textAreaExample">Type your message</label>
-                                                                    </div>
-                                                                    <button type="submit" class="btn btn-primary">
-                                                                        Send
-                                                                    </button>
-                                                                    <input type="hidden"  name="ticketId" value="@ViewBag.ticket.Id"/>
-                                                                </form>
+                                                        <form asp-controller="tickets" asp-action="send" method="post">
+                                                            <div class="form-outline">
+                                                                <textarea class="form-control" name="message" id="textAreaExample" rows="4"></textarea>
+                                                                <label class="form-label" for="textAreaExample">Type your message</label>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">
+                                                                Send
+                                                            </button>
+                                                            <input type="hidden" name="ticketId" value="@ViewBag.ticket.Id" />
+                                                        </form>
                                                     </div>
-                                                    
+
                                                 </div>
                                             </section>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -158,14 +185,14 @@
                                     <h5>Ticket images</h5>
                                     @if (ViewBag.ticket.Photo != null)
                                     {
-                                    <ul>
-                                        @foreach (var photo in ViewBag.ticket.Photo)
-                                        {
-                                            <li>
-                                                <img src="~/uploads/@photo.Name" width="50" />
-                                            </li>
-                                        }
-                                    </ul>
+                                        <ul>
+                                            @foreach (var photo in ViewBag.ticket.Photo)
+                                            {
+                                                <li>
+                                                    <img src="~/uploads/@photo.Name" width="50" />
+                                                </li>
+                                            }
+                                        </ul>
                                     }
                                 </div>
                             </div>

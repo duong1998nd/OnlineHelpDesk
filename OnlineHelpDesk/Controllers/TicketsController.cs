@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using OnlineHelpDesk.Helpers;
-using OnlineHelpDesk.Hubs;
 using OnlineHelpDesk.Models;
 
 namespace OnlineHelpDesk.Controllers
@@ -20,7 +19,7 @@ namespace OnlineHelpDesk.Controllers
     public class TicketsController : Controller
     {
         private readonly AppDbContext _context;
-        public TicketsController(AppDbContext context, IHubContext<ChatHub> signlrHub)
+        public TicketsController(AppDbContext context)
         {
             _context = context;
         }
@@ -46,9 +45,14 @@ namespace OnlineHelpDesk.Controllers
                 .Include(t => t.Supporter)
                 .Include(t => t.User)
                 .FirstOrDefault(m => m.Id == id);
+
             ViewBag.supporters = _context.Account
                 .Include(a=>a.Role)
                 .Where(a => a.RoleId == 3 && a.Status==true).ToList();
+
+            ViewBag.status = _context.Status
+                .Include(s => s.Ticket)
+                .ToList();
 
             ViewBag.discusion = _context.Discussion
                 .Include(t => t.Account)
@@ -65,7 +69,7 @@ namespace OnlineHelpDesk.Controllers
         public IActionResult Create()
         {
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name");
-            ViewData["PeriodId"] = new SelectList(_context.Period, "Id", "Id");
+            ViewData["PeriodId"] = new SelectList(_context.Period, "Id", "Name");
             ViewData["StatusId"] = new SelectList(_context.Status, "Id", "Name");
             ViewData["UserId"] = new SelectList(_context.Account, "Id", "Email");
             return View();
@@ -74,6 +78,7 @@ namespace OnlineHelpDesk.Controllers
         // POST: Tickets/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles ="User")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Tittle,Description,CreatedDate,CategoryId,PeriodId,SupporterId,UserId,StatusId")] Ticket ticket)
@@ -116,7 +121,7 @@ namespace OnlineHelpDesk.Controllers
                 return RedirectToAction("history", "tickets");
             }
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name", ticket.CategoryId);
-            ViewData["PeriodId"] = new SelectList(_context.Period, "Id", "Id", ticket.PeriodId);
+            ViewData["PeriodId"] = new SelectList(_context.Period, "Id", "Name", ticket.PeriodId);
             ViewData["StatusId"] = new SelectList(_context.Status, "Id", "Name", ticket.StatusId);
             ViewData["UserId"] = new SelectList(_context.Account, "Id", "Email", ticket.UserId);
             return View(ticket);
@@ -245,7 +250,8 @@ namespace OnlineHelpDesk.Controllers
         [HttpGet]
         public IActionResult Assign()
         {
-            ViewBag.tickets = _context.Ticket.Include(t => t.Status)
+            ViewBag.tickets = _context.Ticket
+                .Include(t => t.Status)
                 .Include(t => t.User)
                 .Include(t=>t.Supporter)
                 .Include(t => t.Period)
@@ -302,6 +308,21 @@ namespace OnlineHelpDesk.Controllers
             _context.SaveChanges();
             return RedirectToAction("Details", new { id = ticketId});
         }
+
+        [Authorize(Roles = "Supporter")]
+        [HttpPost]
+        public IActionResult End(int id, int statusId)
+        {
+            var ticket = _context.Ticket
+                .Include(t => t.Supporter)
+                .Include(t => t.User)
+                .Include(t=>t.Status)
+                .FirstOrDefault(t => t.Id == id);
+            ticket.StatusId = statusId;
+            _context.SaveChanges();
+            return RedirectToAction("Details", new { id = ticket.Id });
+        }
+
         private bool TicketExists(int id)
         {
             return _context.Ticket.Any(e => e.Id == id);

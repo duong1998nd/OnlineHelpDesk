@@ -61,7 +61,7 @@ namespace OnlineHelpDesk.Controllers
             return View("Status");
         }
 
-        [Authorize(Roles = "Admin, Support")]
+        [Authorize(Roles = "Admin, Support, User")]
         [HttpGet]
         [Route("details")]
         public IActionResult Index()
@@ -71,7 +71,7 @@ namespace OnlineHelpDesk.Controllers
             return View("Indexx", user);
         }
 
-        [Authorize(Roles = "Admin, Support")]
+        [Authorize(Roles = "Admin, Support, User")]
         [HttpPost]
         [Route("details")]
         public IActionResult Index(Account acc)
