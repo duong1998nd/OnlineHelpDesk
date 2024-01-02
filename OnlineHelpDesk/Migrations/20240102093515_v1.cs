@@ -192,6 +192,26 @@ namespace OnlineHelpDesk.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Role",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 1, "Admin" });
+
+            migrationBuilder.InsertData(
+                table: "Role",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 2, "User" });
+
+            migrationBuilder.InsertData(
+                table: "Role",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 3, "Supporter" });
+
+            migrationBuilder.InsertData(
+                table: "Account",
+                columns: new[] { "Id", "Avatar", "CategoryId", "Email", "FName", "Password", "RoleId", "Status" },
+                values: new object[] { 50, null, null, "admin@gmail.com", "Administrator", "1234", 1, true });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Account_CategoryId",
                 table: "Account",

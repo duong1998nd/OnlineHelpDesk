@@ -65,7 +65,7 @@ using OnlineHelpDesk.Models;
             WriteLiteral("<div class=\"content-wrapper\">\r\n    <!-- Main content -->\r\n    <div class=\"content\">\r\n        <div class=\"container-fluid\">\r\n            <div class=\"row\">\r\n                <div class=\"col-lg-12\">\r\n\r\n                    <p>\r\n                        ");
             EndContext();
             BeginContext(342, 34, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5734e61987f14ac18f4a9c140957cad9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1e2ca4de26784ccb955f1615c01d886c", async() => {
                 BeginContext(365, 7, true);
                 WriteLiteral("History");
                 EndContext();
@@ -183,7 +183,7 @@ using OnlineHelpDesk.Models;
             WriteLiteral("\r\n                                    </td>\r\n                                    \r\n                                    <td>\r\n                                        ");
             EndContext();
             BeginContext(2502, 84, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5226a6a3efeb486aaff71d2ff6edee11", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ea044d0ddbd94d22a0d09722021cca80", async() => {
                 BeginContext(2575, 7, true);
                 WriteLiteral("Details");
                 EndContext();

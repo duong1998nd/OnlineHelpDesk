@@ -33,6 +33,34 @@ namespace OnlineHelpDesk.Models
                 .IsUnicode(false);
             });
 
+            model.Entity<Role>().HasData(
+                    new
+                    {
+                        Id = 1,
+                        Name = "Admin"
+                    },
+                    new
+                    {
+                        Id = 2,
+                        Name = "User"
+                    },
+                    new
+                    {
+                        Id = 3,
+                        Name = "Supporter"
+                    }
+                );
+            model.Entity<Account>().HasData(
+                new
+                {
+                    Id = 50,
+                    FName = "Administrator",
+                    Email = "admin@gmail.com",
+                    Password = "1234",
+                    Status = true,
+                    RoleId = 1
+                }
+                );
             model.Entity<Account>(entity =>
             {
                 entity.Property(e => e.Email)

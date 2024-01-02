@@ -55,6 +55,10 @@ namespace OnlineHelpDesk.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Account");
+
+                    b.HasData(
+                        new { Id = 50, Email = "admin@gmail.com", FName = "Administrator", Password = "1234", RoleId = 1, Status = true }
+                    );
                 });
 
             modelBuilder.Entity("OnlineHelpDesk.Models.Category", b =>
@@ -143,6 +147,12 @@ namespace OnlineHelpDesk.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Role");
+
+                    b.HasData(
+                        new { Id = 1, Name = "Admin" },
+                        new { Id = 2, Name = "User" },
+                        new { Id = 3, Name = "Supporter" }
+                    );
                 });
 
             modelBuilder.Entity("OnlineHelpDesk.Models.Status", b =>

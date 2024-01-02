@@ -109,7 +109,7 @@ using OnlineHelpDesk.Models;
                                     ");
             EndContext();
             BeginContext(1264, 5210, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2ed223f121a248728d4643ed938a44fb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3ec6572883c04da4bbf11533189af8ca", async() => {
                 BeginContext(1329, 483, true);
                 WriteLiteral(@"
                                         <table class=""table table-borderless"">
@@ -121,7 +121,7 @@ using OnlineHelpDesk.Models;
                                                                 ");
                 EndContext();
                 BeginContext(1812, 85, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "249e442862c54a1d989f1c6ff033337d", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "38d888c48e364e2297a0999e4e342575", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -244,7 +244,7 @@ AddHtmlAttributeValue("", 1832, ViewBag.ticket.User.Avatar, 1832, 27, false);
                 WriteLiteral("                                                                        <select name=\"supporterId\">\r\n                                                                            ");
                 EndContext();
                 BeginContext(4525, 30, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ecf0c8578e8e4b0688af96b96abfe681", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c984760a31b04c69aaa8eab02f767da4", async() => {
                     BeginContext(4533, 13, true);
                     WriteLiteral("Please choose");
                     EndContext();
@@ -273,7 +273,7 @@ AddHtmlAttributeValue("", 1832, ViewBag.ticket.User.Avatar, 1832, 27, false);
                 WriteLiteral("                                                                                ");
                 EndContext();
                 BeginContext(4835, 45, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d3fc6192464e4077bd6446ee9eb17e81", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7c2bae7db87b4a7baa52b445885c4203", async() => {
                     BeginContext(4861, 10, false);
 #line 69 "C:\Users\Dell\source\repos\OnlineHelpDesk\OnlineHelpDesk\Views\Tickets\Details.cshtml"
                                                                                                     Write(name.FName);
@@ -397,7 +397,7 @@ WriteAttributeValue("", 6407, ViewBag.ticket.Id, 6407, 18, false);
             WriteLiteral("\r\n                                    ");
             EndContext();
             BeginContext(6512, 1759, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2b99aadd0edd42a1a2f8e44a34a96aa9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f03539f17a6944b5b69fe3826aeed170", async() => {
                 BeginContext(6574, 2, true);
                 WriteLiteral("\r\n");
                 EndContext();
@@ -429,7 +429,7 @@ WriteAttributeValue("", 6407, ViewBag.ticket.Id, 6407, 18, false);
                 WriteLiteral("                                                        ");
                 EndContext();
                 BeginContext(7329, 44, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2655e141f25549d4b93be9a7ae69ff01", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "725121ed892b49cfb3c635429d8b57c9", async() => {
                     BeginContext(7355, 9, false);
 #line 102 "C:\Users\Dell\source\repos\OnlineHelpDesk\OnlineHelpDesk\Views\Tickets\Details.cshtml"
                                                                             Write(name.Name);
@@ -589,7 +589,7 @@ WriteAttributeValue(" ", 9753, disc.Account.RoleId== 2 ? "justify-content-end" :
             WriteLiteral(">\r\n                                                                    ");
             EndContext();
             BeginContext(9907, 166, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "761d332146dd4019b71678e54f245830", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "028f58b62afd47f8b6fe8e111a510d82", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -644,7 +644,7 @@ AddHtmlAttributeValue("", 9927, disc.Account.Avatar, 9927, 20, false);
             WriteLiteral("                                                        ");
             EndContext();
             BeginContext(11700, 953, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "52bbbe33cf6f4c619869026798773e41", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4017492b76b84a51a9000e70b9970299", async() => {
                 BeginContext(11763, 795, true);
                 WriteLiteral(@"
                                                             <div class=""form-outline"">
@@ -734,7 +734,7 @@ WriteAttributeValue("", 12566, ViewBag.ticket.Id, 12566, 18, false);
             WriteLiteral("                                                <li>\r\n                                                    ");
             EndContext();
             BeginContext(14028, 46, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "4ea764c4b2164852883cbfa0ce05d9f3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "bb0036f958f74ba1ac844949fe9f40e8", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
